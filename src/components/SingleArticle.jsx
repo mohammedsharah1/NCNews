@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const [articleCard, setArticleCard] = useState({});
@@ -25,6 +26,8 @@ const SingleArticle = () => {
       <h4>{articleCard.topic}</h4>
       <p>{articleCard.body}</p>
       <h4>Author: {articleCard.author}</h4>
+      <br></br>
+      <Comments/>
     </section>
   );
 };
