@@ -46,7 +46,6 @@ export const decrementVoteByArticleId = (article_id) => {
 };
 
 export const postComments = (article_id, body) => {
-  console.log(body);
   return newsApi.post(`articles/${article_id}/comments`, body).then((res) => {
     return res.data;
   });

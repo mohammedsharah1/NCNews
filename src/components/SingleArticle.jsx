@@ -7,6 +7,7 @@ import {
 } from "../api";
 import Comments from "./Comments";
 
+
 const SingleArticle = () => {
   const [articleCard, setArticleCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
