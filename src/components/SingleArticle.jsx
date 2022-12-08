@@ -1,18 +1,35 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../api";
+import {
+  getArticleById,
+  incrementVoteByArticleId,
+  decrementVoteByArticleId,
+} from "../api";
 import Comments from "./Comments";
 
 const SingleArticle = () => {
   const [articleCard, setArticleCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [votes, setVotes] = useState(0);
 
   const { article_id } = useParams();
 
+  const incrementVote = () => {
+    incrementVoteByArticleId(article_id);
+    setVotes((currVotes) => {
+      return currVotes + 1;
+    });
+  };
+  const decrementVote = () => {
+    decrementVoteByArticleId(article_id);
+    setVotes((currVotes) => {
+      return currVotes - 1;
+    });
+  };
+
   useEffect(() => {
     setIsLoading(true);
-    getArticleById(article_id).then(( article ) => {
-      console.log(article)
+    getArticleById(article_id).then((article) => {
       setArticleCard(article);
       setIsLoading(false);
     });
@@ -26,8 +43,11 @@ const SingleArticle = () => {
       <h4>{articleCard.topic}</h4>
       <p>{articleCard.body}</p>
       <h4>Author: {articleCard.author}</h4>
+      <h5>Votes: {votes+articleCard.votes}</h5>
+      <button className="btn" type="button" onClick={incrementVote}>Like</button>
+      <button className="btn" type="button" onClick={decrementVote}>Dislike</button>
       <br></br>
-      <Comments/>
+      <Comments />
     </section>
   );
 };
