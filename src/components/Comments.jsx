@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments } from "../api";
-
+import PostComment from "./PostComments";
 const Comments = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +20,7 @@ const Comments = () => {
 
   return (
     <div className="comments-div">
+      <PostComment setComments={setComments} />
       <ul>
         <br></br>
         <h3 className="comments-list">Comments:</h3>
