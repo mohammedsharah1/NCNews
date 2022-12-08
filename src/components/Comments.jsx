@@ -11,7 +11,6 @@ const Comments = () => {
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id).then((comment) => {
-      console.log(comment.comments);
       setComments(comment.comments);
       setIsLoading(false);
     });

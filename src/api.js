@@ -6,7 +6,6 @@ const newsApi = axios.create({
 
 export const getTopics = () => {
   return newsApi.get("/topics").then(({ data: { topics } }) => {
-    console.log(topics);
     return topics.slug;
   });
 };
@@ -25,7 +24,22 @@ export const getArticleById = (article_id) => {
 
 export const getComments = (article_id) => {
   return newsApi.get(`articles/${article_id}/comments`).then((res) => {
-    console.log(res.data);
     return res.data;
   });
+};
+
+export const incrementVoteByArticleId = (article_id) => {
+  return newsApi
+    .patch(`articles/${article_id}`, { inc_votes: 1 })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export const decrementVoteByArticleId = (article_id) => {
+  return newsApi
+    .patch(`articles/${article_id}`, { inc_votes: -1 })
+    .then((res) => {
+      return res.data;
+    });
 };
