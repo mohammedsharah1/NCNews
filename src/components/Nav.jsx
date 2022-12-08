@@ -1,3 +1,53 @@
+import {Link} from "react-router-dom"
+
+const Nav =()=>{
+    return(
+    <div className="Navbar">
+        <ul>
+      
+        <li><Link to ={"/articles"}>Articles</Link></li>
+     
+    </ul></div>
+    )
+}
+
+export default Nav
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 // import { getTopics } from "../api";
