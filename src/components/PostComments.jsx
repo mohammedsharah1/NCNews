@@ -7,6 +7,7 @@ const PostComment = ({ setComments }) => {
     body: "",
     author: "weegembump",
   });
+  const [loading, setLoading] = useState(false)
 
   const { article_id } = useParams();
 
@@ -20,11 +21,15 @@ const PostComment = ({ setComments }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true)
 
     postComments(article_id, inputComment).then((newComment) => {
       setComments((currComments) => {
+
         return [newComment.comments, ...currComments];
       });
+      setLoading(false)
+      setInputComment({body:''})
     });
   };
   return (
@@ -39,7 +44,7 @@ const PostComment = ({ setComments }) => {
           onChange={handleChange}
           required
         ></textarea>
-        <button type="submit">Comment</button>
+        <button type="submit" disabled={loading}>Comment</button>
       </form>
     </div>
   );

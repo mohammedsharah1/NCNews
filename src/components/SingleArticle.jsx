@@ -7,7 +7,6 @@ import {
 } from "../api";
 import Comments from "./Comments";
 
-
 const SingleArticle = () => {
   const [articleCard, setArticleCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -44,10 +43,14 @@ const SingleArticle = () => {
       <h4>{articleCard.topic}</h4>
       <p>{articleCard.body}</p>
       <h4>Author: {articleCard.author}</h4>
-      <h5>Votes: {votes+articleCard.votes}</h5>
-      <button className="btn" type="button" onClick={incrementVote}>Like</button>
-      <button className="btn" type="button" onClick={decrementVote}>Dislike</button>
-      <br></br>
+      <h5>Votes: {votes + articleCard.votes}</h5>
+      <button className="btn" type="button" onClick={incrementVote}>
+        Like
+      </button>
+      <button className="btn" type="button" onClick={decrementVote}>
+        Dislike
+      </button>
+
       <Comments />
     </section>
   );

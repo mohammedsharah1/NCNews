@@ -22,17 +22,13 @@ const Comments = () => {
     <div className="comments-div">
       <PostComment setComments={setComments} />
       <ul>
-        <br></br>
         <h3 className="comments-list">Comments:</h3>
         {comments.map((comment) => {
           return (
             <li className="single-comment" key={comment.comment_id}>
-              <br></br>
-
               <h4>{comment.author}</h4>
 
               <p>{comment.body}</p>
-              <br></br>
             </li>
           );
         })}
