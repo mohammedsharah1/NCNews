@@ -5,15 +5,17 @@ const newsApi = axios.create({
 });
 
 export const getTopics = () => {
-  return newsApi.get("/topics").then(({ data: { topics } }) => {
-    return topics.slug;
+  return newsApi.get("/topics").then((res) => {
+    return res.data;
   });
 };
 
-export const getArticles = (topics) => {
-  return newsApi.get("/articles").then(({ data: { articles } }) => {
-    return articles;
-  });
+export const getArticles = (topic) => {
+  return newsApi
+    .get("/articles", { params: { topic } })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
 };
 
 export const getArticleById = (article_id) => {
@@ -45,8 +47,11 @@ export const decrementVoteByArticleId = (article_id) => {
   });
 };
 
-export const postComments = (article_id, body) => {
-  return newsApi.post(`articles/${article_id}/comments`, body).then((res) => {
-    return res.data;
-  });
+export const postComments = (article_id, author, body) => {
+  let postBody = { author: author, body: body };
+  return newsApi
+    .post(`articles/${article_id}/comments`, postBody)
+    .then((res) => {
+      return res.data;
+    });
 };

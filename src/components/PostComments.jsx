@@ -2,29 +2,31 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { postComments } from "../api";
 
-const PostComment = ({ setComments }) => {
-  const [inputComment, setInputComment] = useState({
-    body: "",
-    author: "weegembump",
-  });
+const PostComment = ({ comments, setComments }) => {
+  const [body, setBody] = useState("");
+  const [loading, setLoading] = useState(false);
+  console.log(comments);
 
   const { article_id } = useParams();
 
   const handleChange = (event) => {
-    setInputComment((currComment) => {
-      const commentArr = { ...currComment };
-      commentArr.body = event.target.value;
-      return commentArr;
-    });
+    setBody(event.target.value);
+    console.log(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    postComments(article_id, inputComment).then((newComment) => {
+    setLoading(true);
+    const author = "tickle122";
+    postComments(article_id, author, body).then((newComment) => {
+      let comments = { comments: newComment };
       setComments((currComments) => {
+        console.log(currComments);
+
         return [newComment.comments, ...currComments];
       });
+      setLoading(false);
+      setBody("");
     });
   };
   return (
@@ -35,11 +37,13 @@ const PostComment = ({ setComments }) => {
           name="body"
           id="newComment"
           placeholder="Add a comment"
-          value={inputComment.body}
+          value={body}
           onChange={handleChange}
           required
         ></textarea>
-        <button type="submit">Comment</button>
+        <button type="submit" disabled={loading}>
+          Comment
+        </button>
       </form>
     </div>
   );
