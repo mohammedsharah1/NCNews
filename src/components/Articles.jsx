@@ -18,6 +18,7 @@ const Articles = () => {
     <p>loading...</p>
   ) : (
     <ul>
+      {topic ? <h2 className="topic-header">{topic}</h2> : null}
       {articles.map((article) => {
         return (
           <li key={article.article_id} className="articleCard">

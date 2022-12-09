@@ -11,6 +11,7 @@ const Comments = () => {
   useEffect(() => {
     setIsLoading(true);
     getComments(article_id).then((comment) => {
+      console.log(comment, 'recent')
       setComments(comment.comments);
       setIsLoading(false);
     });
@@ -20,16 +21,18 @@ const Comments = () => {
 
   return (
     <div className="comments-div">
-      <PostComment setComments={setComments} />
+      <PostComment comments={comments} setComments={setComments} />
       <ul>
         <h3 className="comments-list">Comments:</h3>
         {comments.map((comment) => {
           return (
-            <li className="single-comment" key={comment.comment_id}>
-              <h4>{comment.author}</h4>
+            <div key={comment.comment_id}>
+              <li>
+                <h4>{comment.author}</h4>
 
-              <p>{comment.body}</p>
-            </li>
+                <p>{comment.body}</p>
+              </li>
+            </div>
           );
         })}
       </ul>

@@ -47,8 +47,11 @@ export const decrementVoteByArticleId = (article_id) => {
   });
 };
 
-export const postComments = (article_id, body) => {
-  return newsApi.post(`articles/${article_id}/comments`, body).then((res) => {
-    return res.data;
-  });
+export const postComments = (article_id, author, body) => {
+  let postBody = { author: author, body: body };
+  return newsApi
+    .post(`articles/${article_id}/comments`, postBody)
+    .then((res) => {
+      return res.data;
+    });
 };
