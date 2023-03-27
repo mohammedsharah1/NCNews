@@ -13,28 +13,22 @@ const ArticlesDiv = styled.section`
     border-radius: 5%;
     text-align: center;
     border-color: #a7bcb9;;
-   
-`
+   `
 
 const Nav =()=>{
     return(
     <>
     <ArticlesDiv>
-        
         <Link to ={"/articles"}>Articles</Link>
-       
-     </ArticlesDiv>
-     <ArticlesDiv>
-        
-         <Link to ={"/topics"}>Topics</Link>
-
-        
-     </ArticlesDiv>
+    </ArticlesDiv>
+    <ArticlesDiv>
+        <Link to ={"/topics"}>Topics</Link>
+    </ArticlesDiv>
     </>
     )
 }
 
-export default Nav
+export default Nav;
 
 
 

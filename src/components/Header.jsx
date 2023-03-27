@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Section = styled.section`
   background-color: #5dacbd;
   height: 50px;
@@ -18,7 +17,6 @@ const Header = () => {
   return (
     <Section>
       <Title>NC NEWS</Title>
-      {/* <Head>Welcome to NC news</Head> */}
     </Section>
   );
 };

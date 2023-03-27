@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle";
 import Home from "./components/Home";
 import Topics from "./components/Topics";
-// import ArticlesByTopic from "./components/ArticlesByTopic";
+
 
 function App() {
   return (
