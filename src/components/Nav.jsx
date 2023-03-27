@@ -1,14 +1,36 @@
 import {Link} from "react-router-dom"
+import styled from "styled-components";
+
+const ArticlesDiv = styled.section`
+    margin-top: 0.5%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 0.5%;
+    float: left;
+    width: 50%;
+    height: 50px;
+    border: solid;
+    border-radius: 5%;
+    text-align: center;
+    border-color: #a7bcb9;;
+   
+`
 
 const Nav =()=>{
     return(
-    <div className="Navbar">
-        <ul>
-      
-        <li><Link to ={"/articles"}>Articles</Link></li>
-        <li><Link to ={"/topics"}>Topics</Link></li>
-     
-    </ul></div>
+    <>
+    <ArticlesDiv>
+        
+        <Link to ={"/articles"}>Articles</Link>
+       
+     </ArticlesDiv>
+     <ArticlesDiv>
+        
+         <Link to ={"/topics"}>Topics</Link>
+
+        
+     </ArticlesDiv>
+    </>
     )
 }
 

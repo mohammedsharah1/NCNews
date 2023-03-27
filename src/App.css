@@ -1,8 +1,12 @@
-.App {
+ .App {
   text-align: center;
+  background:#e0ebeb;
+  /* background-image: url('./images/mr-cup-fabien-barral-Mwuod2cm8g4-unsplash.jpg')  ;
+  background-size: cover 100% 100%;
+  background-position: center; */
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -36,3 +40,15 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  background-color: rgb(175, 220, 221);
+}
+.header {
+  border-width: 10px;
+  border-color: black;
+  background-color: blue;
+
+
+
+} */ 
